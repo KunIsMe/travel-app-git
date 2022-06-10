@@ -12,23 +12,20 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true
-      },
-      showSwiper: true,
-      list: [
-        {
-          id: '0001',
-          imgUrl: 'https://emos-1307152777.cos.ap-beijing.myqcloud.com/img/banner/swiper-1.JPG'
-        },
-        {
-          id: '0002',
-          imgUrl: 'https://emos-1307152777.cos.ap-beijing.myqcloud.com/img/banner/swiper-2.JPG'
-        }
-      ]
+      }
+    }
+  },
+  computed: {
+    showSwiper () {
+      return this.list.length
     }
   }
 }
