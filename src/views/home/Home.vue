@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :city="city" />
+    <Header />
     <home-swiper :list="swiperList" />
     <home-icons :list="iconList" />
     <home-recommend :list="recommendList" />
@@ -27,7 +27,6 @@ export default {
   },
   data () {
     return {
-      city: '',
       swiperList: [],
       iconList: [],
       recommendList: [],
@@ -38,7 +37,6 @@ export default {
     getHomeInfo () {
       // 模仿 axios 去请求数据
       const data = indexMock.data
-      this.city = data.city
       this.swiperList = data.swiperList
       this.iconList = data.iconList
       this.recommendList = data.recommendList
