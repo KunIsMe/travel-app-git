@@ -5,6 +5,12 @@ import City from '../views/city/City'
 
 Vue.use(VueRouter)
 
+const originalPush = VueRouter.prototype.push
+// 修改 原型对象中的 push 方法
+VueRouter.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 const routes = [
   {
     path: '/',

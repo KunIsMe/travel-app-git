@@ -48,7 +48,7 @@ export default {
             _this.$emit('change', this.letters[index])
           }
           _this.timer = null
-        }, 16)
+        }, 8)
       }
     },
     handleTouchEnd () {
