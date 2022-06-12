@@ -41,6 +41,9 @@ export default {
   },
   mounted () {
     this.getCityInfo()
+  },
+  activated () {
+    this.getCityInfo()
   }
 }
 </script>
