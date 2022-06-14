@@ -1,6 +1,6 @@
 <template>
   <div class="container" @click="handleGallaryClick">
-    <div class="wrapper">
+    <div class="wrapper" v-if="imgs.length > 0">
         <swiper :options="swiperOptions">
             <swiper-slide v-for="(item, index) in imgs" :key="index">
                 <img class="gallary-img" :src="item" alt="轮播图片" />
