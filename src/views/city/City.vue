@@ -12,7 +12,7 @@ import Header from './components/Header'
 import CitySearch from './components/Search'
 import CityList from './components/List'
 import CityAlphabet from './components/Alphabet'
-import cityMock from '@/assets/mock/city.json'
+import axios from 'axios'
 
 export default {
   name: 'City',
@@ -31,9 +31,15 @@ export default {
   },
   methods: {
     getCityInfo () {
-      const data = cityMock.data
-      this.cities = data.cities
-      this.hotCities = data.hotCities
+      const _this = this
+      axios.get('/api/city.json').then((response) => {
+        const res = response.data
+        if (res.ret && res.data) {
+          const data = res.data
+          _this.cities = data.cities
+          _this.hotCities = data.hotCities
+        }
+      })
     },
     handleLetterChange (letter) {
       this.letter = letter

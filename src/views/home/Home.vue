@@ -14,7 +14,7 @@ import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
-import indexMock from '@/assets/mock/index.json'
+import axios from 'axios'
 import { mapState } from 'vuex'
 
 export default {
@@ -40,12 +40,17 @@ export default {
   },
   methods: {
     getHomeInfo () {
-      // 模仿 axios 去请求数据
-      const data = indexMock.data
-      this.swiperList = data.swiperList
-      this.iconList = data.iconList
-      this.recommendList = data.recommendList
-      this.weekendList = data.weekendList
+      const _this = this
+      axios.get('/api/index.json').then((response) => {
+        const res = response.data
+        if (res.ret && res.data) {
+          const data = res.data
+          _this.swiperList = data.swiperList
+          _this.iconList = data.iconList
+          _this.recommendList = data.recommendList
+          _this.weekendList = data.weekendList
+        }
+      })
     }
   },
   mounted () {
